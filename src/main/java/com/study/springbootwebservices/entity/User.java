@@ -1,14 +1,12 @@
 package com.study.springbootwebservices.entity;
 
-import org.springframework.stereotype.Controller;
-
 import javax.persistence.*;
 
 @Entity
 @Table(name = "users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @Column(name = "first_name")
@@ -19,6 +17,9 @@ public class User {
 
     @Column(name = "email")
     private String email;
+
+    public User() {
+    }
 
     public User(String firstName, String lastName, String email) {
         super();

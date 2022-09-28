@@ -17,6 +17,7 @@ public class UserController {
     private UserRepository userRepository;
 
     // get all users
+    @GetMapping
     public List<User> getAllUsers() {
         return this.userRepository.findAll();
     }
@@ -34,7 +35,7 @@ public class UserController {
     }
 
     // update user
-    @PutMapping
+    @PutMapping("/{id}")
     public User updateUser(@RequestBody User user, @PathVariable ("id") long userId) {
         User existingUser = this.userRepository.findById(userId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + userId));
